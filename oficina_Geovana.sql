@@ -212,42 +212,22 @@ VALUES
   
  INSERT INTO OS (datasolicitacao_OS,dataprevisao_OS,resposta_OS,IdFuncionario,IdDepartamento,IdCliente)
 	VALUES
-		("8810602","5267141","accan",11,3,7),
-		("5692563","5508452","ullcorper. Duis",9,2,3),
-		("5458850","5486447","vaus",3,4,6),
-		("7811506","1557365","ante",4,4,4),
-		("5366658","2420844","Proin eget odio.",8,8,3),
-		("6981392","4515169","interdum ligula",9,9,4),
-		("7552328","5361334","aliquam arcu",23,3,11),
-		("4202783","8652123","felis",3,1,5),
-		("3328810","7483937","faucibus ut,",6,5,3),
-		("4852322","6701426","nisl Quisque",4,10,3);
+		("88/02","52/41","accan","2","2","2"),
+		("56/63","55/52","ullcorper Duis","3","3","3");
+		
         
-INSERT INTO Servico (nome_Servico,recursos)
+INSERT INTO Servico (nome_Servico,recursos_Servico)
 	VALUES
 		("dolor","sed"),
-		("hendrerit.","posuere"),
-		("arcu.","augue ac"),
-		("nulla","lectus convallis est,"),
-		("sollicitudin","eu neque"),
+		("hendrer","posuere"),
+		("arcu","augueac"),
+		("nulla","lectus"),
+		("solludin","euneque"),
 		("blandit","mi"),
-		("mollis","per conubia nostra,"),
-		("ligula","ullamcorper eu,"),
-		("Integer","Ut sagittis"),
-		("ac,","porttitor");
-        
-INSERT INTO itens_OS (idServico,idOS)
-	VALUES
-		(2,5),
-		(3,6),
-		(4,7),
-		(5,8),
-		(6,9),
-		(7,0),
-		(8,1),
-		(9,2),
-		(10,3),
-		(11,4);
+		("mollis","perostra,"),
+		("ligula","ullamcor"),
+		("Integer","Utgittis"),
+		("ac","porttitor");
         
    -- RESOLUÇÃO DO EXERCÍCIO
    -- Listar os servicos realizados por um determinado departamento
@@ -267,3 +247,20 @@ select s.nome_Servico, d.nomeDepartamento, o.resposta_OS from Servico s INNER JO
    ON (o.IdOS = i.IdOS) INNER JOIN Cliente c ON (c.IdCliente = o.IdCliente);
   
   
+  SELECT
+  count(nome_Funcionario)
+FROM
+  FUNCIONARIO;
+  
+SELECT nome_Cliente as Clientes FROM CLIENTE;
+
+SELECT
+  max(nome_Servico)
+FROM
+  Servico; 
+
+SELECT
+  min(nome_Servico)
+FROM
+  Servico;
+
