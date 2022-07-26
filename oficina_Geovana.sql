@@ -148,7 +148,13 @@ VALUES
   ("ullamcorper eu,","urna. Nunc quis arcu",1),
   ("egestas, urna","egestas. Duis ac arcu.",1),
   ("gravida sit","vulputate eu, odio.",1),
-  ("senectus et","dictum augue malesuada",1);
+  ("senectus et","dictum augue malesuada",1),
+  ("imperdiet dt","egestas.ices, mauris ipsum",1),
+  ("dui, semper","elementum a sapien. Nunc pulvinar",1),
+  ("Proin vel","moll aliquam",1),
+  ("pellentesque eget, dictum","rutrum. Fusce ntum",1),
+  ("pretium aliqetus","Maecenas malesuadeu turpis.",1);
+
 
 INSERT INTO ENDERECO (bairro_Endereco,rua_Endereco,numero_Endereco)
 VALUES
@@ -213,8 +219,16 @@ VALUES
  INSERT INTO OS (datasolicitacao_OS,dataprevisao_OS,resposta_OS,IdFuncionario,IdDepartamento,IdCliente)
 	VALUES
 		("88/02","52/41","accan","2","2","2"),
-		("56/63","55/52","ullcorper Duis","3","3","3");
-		
+		("56/63","55/52","ullcorper Duis","3","3","3"),
+		("56/63","55/52","uluis","3","3","3"),
+		("7806","1365","ante","24","1","1"),
+		("54/50","54/47","vaus","25","6","6"),
+		("7806","1365","ante","26","4","4"),
+		("53658","24244","Proidio.","27","8","3"),
+		("692","4569","intergula","28","9","4"),
+		("75528","5334","aliquarcu","29","3","10"),
+		("4283","8623","felis","30","1","5"),
+		("3310","7437","faucibus ut","31","5","3");
         
 INSERT INTO Servico (nome_Servico,recursos_Servico)
 	VALUES
@@ -228,6 +242,19 @@ INSERT INTO Servico (nome_Servico,recursos_Servico)
 		("ligula","ullamcor"),
 		("Integer","Utgittis"),
 		("ac","porttitor");
+        
+INSERT INTO ITENS_OS (idServico,idOS)
+	VALUES
+		(2,1),
+		(3,92),
+		(4,93),
+		(5,137),
+		(6,138),
+		(7,140),
+		(8,142),
+		(9,143),
+		(10,144),
+		(11,145);
         
    -- RESOLUÇÃO DO EXERCÍCIO
    -- Listar os servicos realizados por um determinado departamento
@@ -252,6 +279,16 @@ select s.nome_Servico, d.nomeDepartamento, o.resposta_OS from Servico s INNER JO
 FROM
   FUNCIONARIO;
   
+    SELECT
+  count(nome_Cliente)
+FROM
+  CLIENTE;
+  
+    SELECT
+  count(DISTINCT IdFuncionario)
+FROM
+  OS;
+  
 SELECT nome_Cliente as Clientes FROM CLIENTE;
 
 SELECT
@@ -264,3 +301,12 @@ SELECT
 FROM
   Servico;
 
+SELECT IdFuncionario, count(*) FROM OS GROUP BY IdFuncionario;
+
+SELECT D.nomeDepartamento, COUNT(*) as Quantidade FROM DEPARTAMENTO D join OS O on (D.idDepartamento = O.idDepartamento) GROUP BY D.nomeDepartamento HAVING Quantidade > 0;
+
+
+SELECT O.idDepartamento, (SELECT COUNT(*) from Departamento D where D.idDepartamento = O.idDepartamento) as Quantidades from
+OS O group by O.idDepartamento;
+
+select*from Departamento D join OS O on (D.idDepartamento = O.idDepartamento) group by D.nomeDepartamento;
