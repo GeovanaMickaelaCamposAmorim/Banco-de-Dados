@@ -1,0 +1,31 @@
+CREATE SCHEMA AGENDA;
+
+ CREATE TABLE CATEGORIA(
+ 
+	id int not null primary key auto_increment,
+    nome varchar(45) not null
+
+);
+
+CREATE TABLE CONTATO(
+
+	ID INT NOT NULL primary KEY auto_increment,
+    NOME VARCHAR(45) NOT NULL,
+    EMAIL VARCHAR(45) NOT NULL,
+    FONE VARCHAR(45) NOT NULL,
+    CELULAR VARCHAR(45) NOT NULL,
+    ID_CATEGORIA INT NOT NULL,
+    constraint fk_id_categoria foreign key (id_categoria) references CATEGORIA(id)
+    
+);
+
+DESCRIBE CONTATO;
+INSERT INTO CATEGORIA(NOME) VALUES ("AMIGOS"), ("TRABALHO"), ("FAMILIA"); 
+INSERT INTO CONTATO(NOME, EMAIL, FONE, CELULAR, ID_CATEGORIA) VALUES ("IGOR", "IGOR@GMAIL.COM", "7522222", "758888888", 1),
+("FULANO", "FULANO@GMAIL.COM", "753333", "75999", 2), 
+("SICLANO", "SICLANO@GMAIL.COM", "7544444", "757777", 3);
+
+SELECT * FROM CATEGORIA;
+SELECT * FROM CONTATO;
+
+ #UPDATE categoria SET nome = ? where ID = 3;
